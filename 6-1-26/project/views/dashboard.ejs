@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Dashboard</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-slate-900 text-white min-h-screen">
+
+  <!-- Navbar -->
+  <nav class="flex justify-between items-center px-8 py-4 bg-zinc-800">
+    <h1 class="font-bold text-xl">SecureAuth</h1>
+    <div class="flex items-center gap-4">
+      <span class="text-zinc-400">Username</span>
+      <a href="/logout" class="px-4 py-2 bg-red-600 rounded-lg hover:bg-red-500">
+        Logout
+      </a>
+    </div>
+  </nav>
+
+  <!-- Content -->
+  <main class="p-8 max-w-6xl mx-auto">
+    <h2 class="text-3xl font-semibold mb-6">Dashboard</h2>
+
+    <div class="grid md:grid-cols-3 gap-6">
+      <div class="bg-zinc-800 rounded-xl p-6 hover:shadow-lg transition">
+        <h3 class="text-lg font-semibold mb-2">Auth Method</h3>
+        <p class="text-zinc-400">JWT Based Authentication</p>
+      </div>
+
+      <div class="bg-zinc-800 rounded-xl p-6 hover:shadow-lg transition">
+        <h3 class="text-lg font-semibold mb-2">Password Security</h3>
+        <p class="text-zinc-400">Hashed with bcrypt</p>
+      </div>
+
+      <div class="bg-zinc-800 rounded-xl p-6 hover:shadow-lg transition">
+        <h3 class="text-lg font-semibold mb-2">Session Status</h3>
+        <p class="text-green-400">Active</p>
+      </div>
+    </div>
+  </main>
+
+</body>
+</html>
+
