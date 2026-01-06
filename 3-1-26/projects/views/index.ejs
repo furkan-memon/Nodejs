@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Update Profile</title>
+  <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+</head>
+
+<body class="bg-zinc-900 min-h-screen text-zinc-100 px-4 py-10">
+
+  <div class="max-w-4xl mx-auto space-y-12">
+
+    <!-- PROFILE SECTION -->
+    <div class="w-full max-w-md mx-auto bg-zinc-800 p-6 rounded-lg space-y-6">
+
+      <h1 class="text-xl font-medium text-center">
+        Update Profile
+      </h1>
+
+      <form action="/creat" method="post" class="space-y-4">
+
+        <input
+          type="text"
+          name="name"
+          placeholder="Title here"
+          class="w-full bg-zinc-700 text-sm px-4 py-2.5 rounded-md
+                 placeholder-zinc-400 focus:outline-none focus:ring-1 focus:ring-zinc-500"
+          required
+        />
+
+       
+
+        <textarea
+          name="detils"
+          rows="3"
+          placeholder="Write text here..."
+          class="w-full bg-zinc-700 text-sm px-4 py-2.5 rounded-md
+                 placeholder-zinc-400 focus:outline-none focus:ring-1 focus:ring-zinc-500 resize-none"
+        ></textarea>
+
+        <button
+          type="submit"
+          class="w-full bg-zinc-600 hover:bg-zinc-500 transition
+                 text-sm py-2.5 rounded-md"
+        >
+          Save Changes
+        </button>
+
+      </form>
+    </div>
+
+    <!-- NOTES SECTION -->
+    <div class="space-y-6">
+
+      <h2 class="text-lg font-medium text-center">
+        My Notes
+      </h2>
+
+      <!-- Notes Grid -->
+      <div class="grid grid-cols-1 sm:grid-cols-2 gap-5">
+
+        <!-- Note Card -->
+       <% if (files.length > 0) { %>
+
+  <% files.forEach(function(val) { %>
+    <div class="bg-zinc-800 p-4 rounded-lg">
+      <h3 class="text-sm font-medium"><div class="bg-zinc-800 p-4 rounded-lg space-y-2">
+          <h3 class="text-sm font-medium truncate">
+       <%= val %>
+            
+          </h3>
+
+          <p class="text-xs text-zinc-400 line-clamp-3">
+            This is a sample note content. Later this will come from the backend.
+          </p>
+
+          <div class="flex justify-end gap-4 text-xs pt-2">
+            <a href="./files/<%= val %>" class="text-zinc-400 hover:text-zinc-200">
+              Read
+            </a>
+            <a href="#" class="text-zinc-400 hover:text-zinc-200">
+              Edit
+            </a>
+          </div>
+        </div> </h3>
+    </div>
+  <% }) %>
+
+<% } else { %>
+  <p class="text-center text-sm text-zinc-500 col-span-full">
+    No task yet
+  </p>
+<% } %>
+
+
+        <!-- <div class="bg-zinc-800 p-4 rounded-lg space-y-2">
+          <h3 class="text-sm font-medium truncate">
+            Sample Note Title
+          </h3>
+
+          <p class="text-xs text-zinc-400 line-clamp-3">
+            This is a sample note content. Later this will come from the backend.
+          </p>
+
+          <div class="flex justify-end gap-4 text-xs pt-2">
+            <a href="#" class="text-zinc-400 hover:text-zinc-200">
+              Read
+            </a>
+            <a href="#" class="text-zinc-400 hover:text-zinc-200">
+              Edit
+            </a>
+          </div>
+        </div> -->
+
+       
+        <!-- Note Card -->
+        <!-- <div class=" bg-zinc-800 p-4 rounded-lg space-y-2">
+          <h3 class="text-sm font-medium truncate">
+            Another Note
+          </h3>
+
+          <p class="text-xs text-zinc-400 line-clamp-3">
+            Notes UI is ready. Logic will be added later.
+          </p>
+
+          <div class="flex justify-end gap-4 text-xs pt-2">
+            <a href="#" class="text-zinc-400 hover:text-zinc-200">
+              Read
+            </a>
+            <a href="#" class="text-zinc-400 hover:text-zinc-200">
+              Edit
+            </a>
+          </div>
+        </div> -->
+      </div>
+    </div>
+
+  </div>
+
+</body>
+</html>

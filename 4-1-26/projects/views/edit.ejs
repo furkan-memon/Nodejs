@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Update Profile</title>
+  <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+</head>
+
+<body class="bg-zinc-900 min-h-screen text-zinc-100 px-4 py-10">
+
+  <div class="max-w-4xl mx-auto space-y-12">
+
+    <!-- PROFILE SECTION -->
+    <div class="w-full max-w-md mx-auto bg-zinc-800 p-6 rounded-lg space-y-6">
+
+      <h1 class="text-xl font-medium text-center">
+        Update Profile
+      </h1>
+
+      <form action="/edit" method="post" class="space-y-4">
+
+        <input
+          type="text"
+          name="Prev"
+          placeholder="Prev title "
+          value = "<%= filename %>"
+           readonly
+          class="w-full bg-zinc-700 text-sm px-4 py-2.5 rounded-md
+                 placeholder-zinc-400 focus:outline-none focus:ring-1 focus:ring-zinc-500"
+          required
+        />
+ <input
+          type="text"
+          name="Newname"
+          placeholder="New title "
+          
+          class="w-full bg-zinc-700 text-sm px-4 py-2.5 rounded-md
+                 placeholder-zinc-400 focus:outline-none focus:ring-1 focus:ring-zinc-500"
+          required
+        />
+       
+
+        <!-- <textarea
+          name="detils"
+          rows="3"
+          placeholder="Write text here..."
+          class="w-full bg-zinc-700 text-sm px-4 py-2.5 rounded-md
+                 placeholder-zinc-400 focus:outline-none focus:ring-1 focus:ring-zinc-500 resize-none"
+        ></textarea> -->
+
+        <button
+          type="submit"
+          class="w-full bg-zinc-600 hover:bg-zinc-500 transition
+                 text-sm py-2.5 rounded-md"
+        >
+          Save Changes
+        </button>
+
+      </form>
+    </div>
+
+   
+
+  </div>
+
+</body>
+</html>

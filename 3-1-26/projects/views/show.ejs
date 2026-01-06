@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Read Note</title>
+  <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+</head>
+
+<body class="bg-zinc-900 min-h-screen text-zinc-100 px-4 py-10">
+
+  <div class="max-w-3xl mx-auto space-y-8">
+
+    <!-- Header -->
+    <div class="flex justify-between items-center">
+      <h1 class="text-xl font-medium">
+        <%= filesname %>
+        
+      </h1>
+
+      <a href="/" class="text-sm text-zinc-400 hover:text-zinc-200">
+        ← Back
+      </a>
+    </div>
+
+    <!-- Note Content -->
+     
+    <div class="bg-zinc-800 p-6 rounded-lg">
+      <pre class="text-sm text-zinc-300 whitespace-pre-wrap leading-relaxed">
+        <%= filedata%>
+        
+      </pre>
+    </div>
+
+  </div>
+
+</body>
+</html>
