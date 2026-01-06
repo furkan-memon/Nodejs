@@ -16,13 +16,31 @@
         Simple & secure authentication using modern standards.
       </p>
 
-      <div class="flex gap-4">
-        <a href="/login" class="px-6 py-3 bg-indigo-600 rounded-lg hover:bg-indigo-500 transition">
+      <!-- Action Buttons -->
+      <div class="flex gap-4 mb-8">
+        <a href="/login"
+           class="px-6 py-3 bg-indigo-600 rounded-lg hover:bg-indigo-500 transition">
           Login
         </a>
-        <a href="/register" class="px-6 py-3 border border-zinc-600 rounded-lg hover:bg-zinc-800 transition">
+        <a href="/register"
+           class="px-6 py-3 border border-zinc-600 rounded-lg hover:bg-zinc-800 transition">
           Register
         </a>
+      </div>
+
+      <!-- Last Visited Accounts -->
+      <div class="bg-zinc-800 rounded-xl p-4 max-w-sm">
+        <p class="text-sm text-zinc-400 mb-3">Last visited account</p>
+
+        <div class="space-y-2">
+          <a href="/relogin" class="text-sm">
+          <div class="flex items-center justify-between bg-zinc-700 px-4 py-2 rounded-lg hover:bg-zinc-600 cursor-pointer">
+          <%= email %>
+          </div>
+          </a>
+
+          
+        </div>
       </div>
     </div>
 
