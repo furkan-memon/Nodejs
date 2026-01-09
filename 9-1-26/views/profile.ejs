@@ -2,7 +2,17 @@
 
 <nav class="bg-white shadow px-8 py-4 flex justify-between items-center">
   <h1 class="text-xl font-bold">MyProject</h1>
-  <div class="space-x-6 flex items-center">
+  <div class="space-x-3 flex items-center">
+    
+
+<a href="/profile/upload" class="block hover:opacity-80 transition">
+  <img
+    class="w-10 h-10 rounded-full rounded-full"
+    src="/images/upload/<%= user.avatar %>"
+    alt="Profile Image"
+  >
+</a>
+
     <span class="font-medium text-gray-700"><%= user.username %></span>
     <a href="/logout" class="hover:text-blue-600">Logout</a>
   </div>

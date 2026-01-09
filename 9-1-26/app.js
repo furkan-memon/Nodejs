@@ -6,9 +6,8 @@ const userModel = require('./model/user')
 const postModel = require('./model/post')
 const bcrypt = require('bcrypt')
 const jwt = require('jsonwebtoken');
-const crypto = require('crypto');
-const multer = require('multer');
 
+const upload = require("./config/multerconfig");
 
 
 
@@ -22,33 +21,47 @@ app.set('view engine', 'ejs');
 app.use(cookieParser())
 const uploadDir = path.join(__dirname, 'public', 'images', 'upload');
 
-const storage = multer.diskStorage({
-  destination: function (req, file, cb) {
-    cb(null, uploadDir)
-  },
-  filename: function (req, file, cb) {
-    crypto.randomBytes(16, (err, buf) => {
-      const fn = buf.toString('hex') + path.extname(file.originalname); /* path remove the extansin name from the file adn add it in hax file name */
-      cb(null,  fn)
-    })
-  }
-})
+// const storage = multer.diskStorage({
+//   destination: function (req, file, cb) {
+//     cb(null, uploadDir)
+//   },
+//   filename: function (req, file, cb) {
+//     crypto.randomBytes(16, (err, buf) => {
+//       const fn = buf.toString('hex') + path.extname(file.originalname); /* path remove the extansin name from the file adn add it in hax file name */
+//       cb(null,  fn)
+//     })
+//   }
+// })
 
-const upload = multer({ storage: storage })
+// const upload = multer({ storage: storage })
 
 
 app.get('/', (req, res) => {
   res.render('index')
 })
 
-app.get('/test', (req, res) => {
-  res.render('test')
+app.get('/profile/upload',authenticateToken,async (req, res) => {
+  
+  let token = req.user;
+  if (!token) return res.send("You must be Loggd in")
+  
+  let user = await userModel.findOne({ _id: token.userid })
+  console.log(user);
+  
+  res.render('profilepic',
+  {
+    user: user
+  });
 })
 
-app.post('/upload', upload.single('file'), (req, res) => {
-  console.log(req.file);
-  
-
+app.post('/upload',authenticateToken, upload.single('image'), async (req, res) => {
+  const file = req.file;
+let token = req.user;
+ 
+  let user = await userModel.findOne({ _id: token.userid } )
+    user.avatar = file.filename
+    await user.save()
+    res.redirect("/profile")  
 })
 
 app.get('/register', (req, res) => {
