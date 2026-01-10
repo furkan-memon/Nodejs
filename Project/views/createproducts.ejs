@@ -1,0 +1,29 @@
+<main class="w-3/4 bg-white p-10 rounded-xl shadow ml-4">
+  <h2 class="text-2xl font-semibold mb-6">Create New Product</h2>
+
+  <form action="/products/create" method="post" enctype="multipart/form-data" class="space-y-8">
+    <section>
+      <h3 class="font-medium mb-4">Product Details</h3>
+      <input type="file" name="image" class="mb-4">
+
+      <div class="grid grid-cols-3 gap-4">
+        <input class="border p-2 rounded" name="name" placeholder="Product Name">
+        <input class="border p-2 rounded" name="price" placeholder="Price">
+        <input class="border p-2 rounded" name="discount" placeholder="Discount">
+      </div>
+    </section>
+
+    <section>
+      <h3 class="font-medium mb-4">Design Colors</h3>
+      <div class="grid grid-cols-3 gap-4">
+        <input class="border p-2 rounded" name="bgcolor" placeholder="Background Color">
+        <input class="border p-2 rounded" name="panelcolor" placeholder="Panel Color">
+        <input class="border p-2 rounded" name="textcolor" placeholder="Text Color">
+      </div>
+    </section>
+
+    <button class="px-6 py-2 bg-blue-600 text-white rounded hover:bg-blue-700">
+      Create Product
+    </button>
+  </form>
+</main>

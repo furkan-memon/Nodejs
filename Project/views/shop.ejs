@@ -1,0 +1,19 @@
+<div class="grid grid-cols-4 gap-6">
+  <% products.forEach(product => { %>
+  <div class="bg-white rounded-xl shadow hover:shadow-lg transition overflow-hidden">
+    <div class="h-52 flex items-center justify-center bg-[<%= product.bgcolor %>]">
+      <img class="h-44" src="data:image/jpeg;base64,<%= product.image.toString('base64') %>">
+    </div>
+
+    <div class="p-4 flex justify-between items-center bg-[<%= product.panelcolor %>] text-[<%= product.textcolor %>]">
+      <div>
+        <h3 class="font-medium"><%= product.name %></h3>
+        <p class="text-sm">₹ <%= product.price %></p>
+      </div>
+      <button class="w-8 h-8 rounded-full bg-white text-black flex items-center justify-center">
+        <i class="ri-add-line"></i>
+      </button>
+    </div>
+  </div>
+  <% }) %>
+</div>

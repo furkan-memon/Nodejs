@@ -1,0 +1,29 @@
+<div class="w-full min-h-screen flex items-center justify-center bg-gray-100">
+  <div class="w-full max-w-sm bg-white p-8 rounded-xl shadow">
+    <h3 class="text-2xl font-semibold mb-6 text-center">Admin Access</h3>
+
+    <form action="/create" method="post" class="space-y-4">
+      <input
+        class="w-full border px-4 py-2 rounded"
+        type="email"
+        name="email"
+        placeholder="Admin Email"
+      >
+
+      <input
+        class="w-full border px-4 py-2 rounded"
+        type="password"
+        name="password"
+        placeholder="Password"
+      >
+
+      <button class="w-full py-2 bg-red-600 text-white rounded hover:bg-red-700">
+        Login
+      </button>
+    </form>
+
+    <p class="text-xs text-center text-gray-400 mt-4">
+      Restricted access only
+    </p>
+  </div>
+</div>

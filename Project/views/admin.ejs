@@ -1,0 +1,35 @@
+
+<div class="w-full min-h-screen flex px-20 py-16 bg-gray-50">
+  <!-- Sidebar -->
+  <aside class="w-[22%] pr-10">
+    <nav class="space-y-3 text-sm font-medium">
+      <a class="block hover:text-blue-500">All Products</a>
+      <a class="block hover:text-blue-500">Create New Product</a>
+    </nav>
+  </aside>
+
+  <!-- Content -->
+  <section class="w-[78%]">
+    <div class="flex justify-between items-center mb-6">
+      <h2 class="text-2xl font-semibold">Products</h2>
+      <a class="text-red-500 text-sm hover:underline">Delete all</a>
+    </div>
+
+    <div class="grid grid-cols-4 gap-6">
+      <% for(let i=0;i<8;i++){ %>
+      <div class="rounded-xl overflow-hidden bg-white shadow hover:shadow-lg transition">
+        <div class="h-48 bg-gray-100"></div>
+        <div class="p-4 flex justify-between items-center">
+          <div>
+            <h3 class="font-medium">Clinge Bag</h3>
+            <p class="text-sm text-gray-500">₹1200</p>
+          </div>
+          <button class="w-8 h-8 rounded-full bg-black text-white flex items-center justify-center">
+            <i class="ri-add-line"></i>
+          </button>
+        </div>
+      </div>
+      <% } %>
+    </div>
+  </section>
+</div>
