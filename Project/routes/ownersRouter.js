@@ -19,8 +19,9 @@ if (process.env.NODE_ENV === 'development') {
     })
 }
 router.get('/', (req, res) => {
-    res.send('yooo  router done ');
+    res.render('owner-login');
 })
 
 
 module.exports = router 
+// $env:NODE_ENV="development"

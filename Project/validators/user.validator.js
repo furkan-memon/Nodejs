@@ -6,5 +6,6 @@ const userRegisterSchema = Joi.object({
   password: Joi.string().min(6).required(),
   contact: Joi.number().optional()
 });
+console.log(userRegisterSchema.describe());
 
 module.exports = userRegisterSchema;

@@ -1,19 +1,30 @@
-<div class="grid grid-cols-4 gap-6">
-  <% products.forEach(product => { %>
-  <div class="bg-white rounded-xl shadow hover:shadow-lg transition overflow-hidden">
-    <div class="h-52 flex items-center justify-center bg-[<%= product.bgcolor %>]">
-      <img class="h-44" src="data:image/jpeg;base64,<%= product.image.toString('base64') %>">
+<%- include("partials/header") %>
+
+<div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
+
+  <div class="bg-white rounded-2xl shadow hover:shadow-xl transition overflow-hidden">
+    
+    <div class="h-52 bg-gray-100 flex items-center justify-center">
+      <img
+        src="https://via.placeholder.com/200"
+        class="h-44 object-contain"
+        alt="Product"
+      />
     </div>
 
-    <div class="p-4 flex justify-between items-center bg-[<%= product.panelcolor %>] text-[<%= product.textcolor %>]">
+    <div class="p-4 flex justify-between items-center bg-gray-50">
       <div>
-        <h3 class="font-medium"><%= product.name %></h3>
-        <p class="text-sm">₹ <%= product.price %></p>
+        <h3 class="font-semibold text-gray-800">Product Name</h3>
+        <p class="text-sm text-gray-600">₹ 999</p>
       </div>
-      <button class="w-8 h-8 rounded-full bg-white text-black flex items-center justify-center">
+
+      <button class="w-9 h-9 rounded-full bg-black text-white flex items-center justify-center hover:scale-105 transition">
         <i class="ri-add-line"></i>
       </button>
     </div>
+
   </div>
-  <% }) %>
+
 </div>
+
+<%- include("partials/footer") %>
