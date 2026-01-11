@@ -4,7 +4,13 @@
   <div class="w-full max-w-sm bg-white p-8 rounded-xl shadow">
     <h3 class="text-2xl font-semibold mb-6 text-center">Admin Access</h3>
 
-    <form action="/owners" method="post" class="space-y-4">
+    <form action="/owners/create" method="post" class="space-y-4">
+       <input
+        class="w-full border px-4 py-2 rounded"
+        type="text"
+        name="fullname"
+        placeholder="Admin Name"
+      >
       <input
         class="w-full border px-4 py-2 rounded"
         type="email"

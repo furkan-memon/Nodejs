@@ -12,6 +12,10 @@ const expressSession = require('express-session')
 const flash = require('connect-flash')
 const indexRouter = require('./routes/index')
 require('dotenv').config()
+app.use((req, res, next) => {
+  console.log('INCOMING:', req.method, req.url);
+  next();
+});
 app.use(express.json());
 app.use(express.urlencoded({extended: true}));
 app.use(cookieParser());
@@ -27,6 +31,7 @@ app.set('view engine', 'ejs');
  app.use('/owners', ownersRouter)
  app.use('/users', usersRouter)
  app.use('/products', productsRouter)
+
 
  app.listen(3000,(err)=>{
     

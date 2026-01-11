@@ -1,26 +1,57 @@
 const express = require('express');
 const router = express.Router();
-const ownerModel = require('../model/owner')
+const ownerModel = require('../model/owner');
 
-if (process.env.NODE_ENV === 'development') {
+router.get('/', (req, res) => {
+    res.render('owner-login')
+})
+router.post('/', (req, res) => {
+
+    res.redirect('/owners/admin')
+})
+router.get('/admin', (req, res) => {
+    res.render('admin')
+})
+router.get('/create', (req, res) => {
+    res.render('owner-RAGISTER')
+})
+router.get('/addproduct', (req, res) => {
+    res.render('createproducts')
+})
+
+
     router.post('/create', async (req, res) => {
-        let owner = await ownerModel.find();
-        if (owner.length > 0) {
-            return res
-                .status(503).send("you don't have permission create a new owner")
-        }
-        let {fullname,email,password} = req.body
-      let createdowner =  await ownerModel.create({
+        try{
+            console.log(process.env.NODE_ENV);
+            
+            if (process.env.NODE_ENV !== "development") {
+                return res
+        .status(403)
+        .send("You don't have permission to create a new owner");
+            }
+             const existingOwner = await ownerModel.findOne();
+             console.log(existingOwner)
+             if (existingOwner) {
+      return res
+        .status(503)
+        .send("Owner already exists");
+    }
+    console.log(req.body);
+    
+    let {fullname,email,password} = req.body
+    let createdowner =  await ownerModel.create({
             fullname,
             email,
             password,
         })
-        res.status(201).send(createdowner)
+        res.redirect('/owners');
+        }catch (error) {
+    console.error(error);
+    res.status(500).send('Server error');
+  }
     })
-}
-router.get('/', (req, res) => {
-    res.render('owner-login');
-})
+
+
 
 
 module.exports = router 
