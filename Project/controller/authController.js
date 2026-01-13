@@ -26,8 +26,9 @@ const user = await userModel.create({
 });
 
 const token = ganrateToken(user);
+
 res.cookie('token', token);
-res.send('Yooo user created');
+res.redirect('/shop');
     
       } catch (err) {
         console.error(err);
@@ -44,7 +45,7 @@ const loginuser = async (req,res) => {
       return res.status(400).send('Email and password required');
     }
   let user = await userModel.findOne({email})
-  console.log(user);
+  // console.log(user);
   
   if(user)
     {
@@ -54,7 +55,9 @@ const loginuser = async (req,res) => {
     res.cookie('token', token);
     res.redirect('/shop')
      }
-     
+     else{
+      res.send('error')
+     }
     }
   }
      catch (err) {
@@ -68,8 +71,7 @@ const loginuser = async (req,res) => {
 
 }
 const logoutuser = (req , res) =>{
-res.cookie('token' , '')
-console.log(hello);
+res.clearCookie("token");
 
 res.redirect('/')
 }

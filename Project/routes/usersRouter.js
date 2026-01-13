@@ -9,6 +9,7 @@ const {registerUser,loginuser,logoutuser} = require('../controller/authControlle
 router.get('/',(req,res)=>{
     res.send('yooo  router done ');
 })
+
 router.use(cookieParser())
 router.post('/register',registerUser);
 router.post('/login',loginuser);

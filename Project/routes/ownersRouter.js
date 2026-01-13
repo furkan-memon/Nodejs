@@ -1,7 +1,7 @@
 const express = require('express');
 const router = express.Router();
 const ownerModel = require('../model/owner');
-
+const ProductModel = require('../model/Product')
 router.get('/', (req, res) => {
     res.render('owner-login')
 })
@@ -9,13 +9,19 @@ router.post('/', (req, res) => {
 
     res.redirect('/owners/admin')
 })
-router.get('/admin', (req, res) => {
-    res.render('admin')
+router.get('/admin', async(req, res) => {
+    let products = await ProductModel.find()
+ 
+    
+    res.render('admin', {products})
 })
+
 router.get('/create', (req, res) => {
     res.render('owner-RAGISTER')
 })
 router.get('/addproduct', (req, res) => {
+    let success = req.flash('success')
+  
     res.render('createproducts')
 })
 
@@ -30,7 +36,7 @@ router.get('/addproduct', (req, res) => {
         .send("You don't have permission to create a new owner");
             }
              const existingOwner = await ownerModel.findOne();
-             console.log(existingOwner)
+            
              if (existingOwner) {
       return res
         .status(503)
