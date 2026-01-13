@@ -49,8 +49,8 @@
               class="bg-white rounded-xl overflow-hidden shadow-sm hover:shadow-md transition relative"
             >
               <!-- Image -->
-              <div class="h-48 bg-gray-200 flex   overflow-hidden items-center justify-center">
-                  <img class="w-full h-full object-cover" src="data:image/jpeg;base64,<%= product.image.toString('base64') %>" alt="">
+              <div class="h-60 relative   w-full bg-gray-200  overflow-hidden rounded-lg ">
+                  <img class="w-full absolute    h-full transition-transform duration-300 hover:scale-105" src="data:image/jpeg;base64,<%= product.image.toString('base64') %>" alt="">
               </div>
   
               <!-- Info -->
@@ -74,13 +74,13 @@
                     class="absolute right-0 mt-2 w-32 bg-white border rounded-lg shadow-lg hidden z-20"
                   >
                     <a
-                      href="/owners/editproduct/<%= products._id %>"
+                      href="/owners/editproduct/<%= product._id %>"
                       class="block px-4 py-2 text-sm hover:bg-gray-100"
                     >
                       Edit
                     </a>
                     <a
-                      href="/owners/deleteproduct/<%= products._id %>"
+                      href="/owners/deleteproduct/<%= product._id %>"
                       class="block px-4 py-2 text-sm text-red-500 hover:bg-gray-100"
                     >
                       Delete
