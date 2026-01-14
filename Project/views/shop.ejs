@@ -1,9 +1,13 @@
 <%- include("partials/header") %>
-<div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6 px-6">
-<% products.forEach((product)=>{ %>
 
-  <div class="bg-white rounded-2xl shadow hover:shadow-xl transition overflow-hidden">
-    
+<div
+  class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6 px-6"
+>
+  <% products.forEach((product)=>{ %>
+
+  <div
+    class="bg-white rounded-2xl shadow hover:shadow-xl transition overflow-hidden"
+  >
     <div class="h-52 bg-gray-100 flex items-center justify-center">
       <img
         src="data:image/jpeg;base64,<%= product.image.toString('base64') %>"
@@ -18,14 +22,13 @@
         <p class="text-sm text-gray-600">₹<%= product.price %></p>
       </div>
 
-      <button class="w-9 h-9 rounded-full bg-black text-white flex items-center text-3xl font-bold justify-center hover:scale-105 transition">
-                            +
-
-      </button>
+      <a
+       href="/addtocart/<%= product._id%>" class="w-9 h-9 rounded-full bg-black text-white flex items-center text-3xl font-bold justify-center hover:scale-105 transition"
+      >
+        +
+      </a>
     </div>
-
-
+  </div>
+  <% }) %>
 </div>
-         <% }) %>
-        </div>
 <%- include("partials/footer") %>

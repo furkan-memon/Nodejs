@@ -7,13 +7,17 @@ const cookieParser = require('cookie-parser')
 const {ganretatoken} = require('../utils/ganrateToken')
 const {registerUser,loginuser,logoutuser} = require('../controller/authController')
 router.get('/',(req,res)=>{
-    res.send('yooo  router done ');
+        res.send('yooo  router done ');
+
 })
 
 router.use(cookieParser())
 router.post('/register',registerUser);
 router.post('/login',loginuser);
-router.post('/logout',logoutuser);
+router.get('/logout',(req,res)=>{
+    res.clearCookie("token");
+ return res.redirect('/');
+});
 
      
 module.exports = router 

@@ -22,10 +22,18 @@ const userSchema = new mongoose.Schema({
     minlength: 6
   },
 
-  cart: {
-    type: Array,
-    default: []
-  },
+ cart: [
+  {
+    product: {
+      type: mongoose.Schema.Types.ObjectId,
+      ref: 'Product'
+    },
+    qty: {
+      type: Number,
+      default: 0
+    }
+  }
+],
 
   orders: {
     type: Array,

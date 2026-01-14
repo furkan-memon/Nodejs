@@ -38,15 +38,11 @@ res.redirect('/shop');
 }
 const loginuser = async (req,res) => {
   try{
-
-  
   const {email,password} = req.body
   if (!email || !password) {
       return res.status(400).send('Email and password required');
     }
   let user = await userModel.findOne({email})
-  // console.log(user);
-  
   if(user)
     {
      let match = await bcrypt.compare(password,user.password )
@@ -64,16 +60,11 @@ const loginuser = async (req,res) => {
     console.error(err);
     res.status(500).send('Server error');
   }
-    
-    
-    
-
-
+  
 }
 const logoutuser = (req , res) =>{
-res.clearCookie("token");
-
-res.redirect('/')
+req.clearCookie("token");
+res.redirect('/');
 }
 
 module.exports.registerUser = registerUser
