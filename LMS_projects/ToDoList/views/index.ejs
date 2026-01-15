@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Tasks</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-gray-100 min-h-screen flex justify-center items-start py-10">
+
+  <div class="w-full max-w-md bg-white rounded-xl shadow p-6">
+    <h1 class="text-2xl font-semibold mb-4 text-center">Task Manager</h1>
+
+    <form action="/create" method="POST" class="flex gap-2 mb-5">
+      <input
+        name="title"
+        placeholder="New task"
+        required
+        class="flex-1 border rounded-lg px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500"
+      />
+      <button class="bg-blue-600 text-white px-4 rounded-lg">
+        Add
+      </button>
+    </form>
+
+    <ul class="space-y-3">
+      <% items.forEach(item => { %>
+        <li class="bg-gray-50 rounded-lg px-4 py-3 flex justify-between items-center">
+          <span class="text-gray-800"><%= item.title %></span>
+
+          <div class="flex gap-3 text-sm">
+            <a
+              href="/modify/<%= item.uid %>"
+              class="text-blue-600 hover:underline"
+            >
+              Edit
+            </a>
+
+            <form action="/remove/<%= item.uid %>" method="POST">
+              <button class="text-red-500 hover:underline">
+                Delete
+              </button>
+            </form>
+          </div>
+        </li>
+      <% }) %>
+    </ul>
+  </div>
+
+</body>
+</html>

@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Edit Task</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-gray-100 min-h-screen flex justify-center items-center">
+
+  <div class="bg-white w-full max-w-md p-6 rounded-xl shadow">
+    <h2 class="text-xl font-semibold mb-4 text-center">Update Task</h2>
+
+    <form action="/save/<%= current.uid %>" method="POST" class="space-y-4">
+      <input
+        name="title"
+        value="<%= current.title %>"
+        required
+        class="w-full border rounded-lg px-3 py-2 focus:outline-none focus:ring-2 focus:ring-green-500"
+      />
+
+      <div class="flex justify-between">
+        <a href="/" class="text-gray-500 hover:underline">
+          Cancel
+        </a>
+        <button class="bg-green-600 text-white px-4 py-2 rounded-lg">
+          Save
+        </button>
+      </div>
+    </form>
+  </div>
+
+</body>
+</html>
