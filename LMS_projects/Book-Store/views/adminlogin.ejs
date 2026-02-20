@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Admin Login</title>
+  <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+</head>
+
+<body class="min-h-screen flex items-center justify-center bg-[#F2E3BB]">
+
+  <div class="bg-white rounded-2xl shadow-xl p-8 w-full max-w-md">
+
+    <div class="text-center mb-6">
+      <h1 class="text-2xl font-semibold text-[#427A43]">Admin Login</h1>
+    </div>
+
+    <form action="/adminlogin" method="POST" class="space-y-5">
+
+      <div>
+        <input type="email" name="email" required
+          placeholder="Admin Email"
+          class="w-full border border-gray-300 rounded-lg px-4 py-3
+                 focus:outline-none focus:border-[#427A43]">
+      </div>
+
+      <div>
+        <input type="password" name="password" required
+          placeholder="Password"
+          class="w-full border border-gray-300 rounded-lg px-4 py-3
+                 focus:outline-none focus:border-[#427A43]">
+      </div>
+
+      <button type="submit"
+        class="w-full bg-[#427A43] text-white py-3 rounded-lg
+               hover:bg-green-800 transition">
+        Login
+      </button>
+
+    </form>
+
+    <p class="text-center text-sm mt-5">
+      No admin account?
+      <a href="/admin/register" class="text-[#427A43] font-medium hover:underline">
+        Register
+      </a>
+    </p>
+
+  </div>
+
+</body>
+</html>

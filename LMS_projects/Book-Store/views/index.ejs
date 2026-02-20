@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Bookstore Shop</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+</head>
+
+<body class="bg-[#F2E3BB] min-h-screen">
+
+  <!-- Header -->
+  <header class="bg-white shadow-sm">
+    <div class="max-w-6xl mx-auto px-6 py-4 flex justify-between items-center">
+      
+      <!-- Logo -->
+      <h1 class="text-3xl font-semibold text-[#427A43] ">Book Store</h1>
+
+      <!-- Search -->
+      <input 
+        type="text" 
+        placeholder="Search books..."
+        class="border border-gray-300 rounded-lg px-4 py-2 w-64
+               focus:outline-none focus:border-[#427A43]"
+      >
+
+      <!-- Cart -->
+      <button class="bg-[#427A43] text-white px-4 py-2 rounded-lg">
+        Cart
+      </button>
+
+    </div>
+  </header>
+
+
+  <!-- Shop Section -->
+  <section class="max-w-6xl mx-auto px-6 py-10">
+
+    <h1 class="text-3xl font-semibold text-[#427A43] mb-8">
+      Explore Our Books
+    </h1>
+
+    <!-- Product Grid -->
+    <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-8">
+
+      <!-- Book Card -->
+      <div class="bg-white rounded-xl shadow-md overflow-hidden hover:shadow-xl transition">
+        <img src="https://picsum.photos/300/400?random=1" class="w-full h-60 object-cover">
+        <div class="p-4">
+          <h2 class="font-semibold text-lg text-[#427A43]">The Silent Forest</h2>
+          <p class="text-gray-600 text-sm mt-2">
+            A thrilling journey through mystery and nature.
+          </p>
+          <div class="flex justify-between items-center mt-4">
+            <span class="font-bold text-[#427A43]">₹499</span>
+            <button class="bg-[#427A43] text-white px-3 py-1 rounded-md text-sm">
+              Add to Cart
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Book Card -->
+      <div class="bg-white rounded-xl shadow-md overflow-hidden hover:shadow-xl transition">
+        <img src="https://picsum.photos/300/400?random=2" class="w-full h-60 object-cover">
+        <div class="p-4">
+          <h2 class="font-semibold text-lg text-[#427A43]">Mind & Growth</h2>
+          <p class="text-gray-600 text-sm mt-2">
+            Improve mindset and productivity daily.
+          </p>
+          <div class="flex justify-between items-center mt-4">
+            <span class="font-bold text-[#427A43]">₹699</span>
+            <button class="bg-[#427A43] text-white px-3 py-1 rounded-md text-sm">
+              Add to Cart
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Book Card -->
+      <div class="bg-white rounded-xl shadow-md overflow-hidden hover:shadow-xl transition">
+        <img src="https://picsum.photos/300/400?random=3" class="w-full h-60 object-cover">
+        <div class="p-4">
+          <h2 class="font-semibold text-lg text-[#427A43]">The Startup Code</h2>
+          <p class="text-gray-600 text-sm mt-2">
+            Learn how modern startups scale globally.
+          </p>
+          <div class="flex justify-between items-center mt-4">
+            <span class="font-bold text-[#427A43]">₹799</span>
+            <button class="bg-[#427A43] text-white px-3 py-1 rounded-md text-sm">
+              Add to Cart
+            </button>
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+  </section>
+
+</body>
+</html>

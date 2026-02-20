@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Login | Bookstore</title>
+  <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+</head>
+
+<body class="min-h-screen flex items-center justify-center 
+             ">
+
+  <div class="w-full max-w-sm">
+
+    <!-- Logo -->
+    <div class="text-center mb-3">
+        <h1 class="text-2xl font-semibold text-[#427A43] text-center">
+         Creat Your Account
+        </h1>
+        <p class="text-sm text-[#427A43]/80 text-center mb-7">
+         Join us and explore a wolrd of book 
+        </p>
+    </div>
+
+    <!-- Login Card -->
+    <div class="bg-white/90 backdrop-blur
+                border border-[#427A43]/20
+                rounded-2xl px-7 py-8
+                shadow-xl">
+
+
+      <form class="flex flex-col gap-6" method="post">
+<div class="relative">
+          <input
+            type="text"
+            id="fullname"
+            name="fullname"
+            required
+            class="peer w-full rounded-lg border border-gray-300 px-4 py-3 text-sm
+                   outline-none focus:border-[#427A43]"
+          />
+          <label
+            for="Name"
+            class="absolute left-4 top-1/2 -translate-y-1/2
+                   bg-white px-1 text-gray-500 text-sm transition-all
+                   peer-focus:top-0 peer-focus:text-xs peer-focus:text-[#427A43]
+                   peer-valid:top-0 peer-valid:text-xs"
+          >
+            Full Name
+          </label>
+        </div>
+        <!-- Email -->
+          <div class="relative">
+   <input
+            type="email"
+            id="email"
+            name="email"
+            required
+            class="peer w-full rounded-lg border border-gray-300 px-4 py-3 text-sm
+                   outline-none focus:border-[#427A43]"
+          />
+          <label
+            for="email"
+            class="absolute left-4 top-1/2 -translate-y-1/2
+                   bg-white px-1 text-gray-500 text-sm transition-all
+                   peer-focus:top-0 peer-focus:text-xs peer-focus:text-[#427A43]
+                   peer-valid:top-0 peer-valid:text-xs"
+          >
+            Email
+          </label>
+</div>
+
+
+        <!-- Password -->
+        <div class="relative">
+          <input
+            type="password"
+            id="password"
+            name="password"
+            required
+            class="peer w-full rounded-lg border border-gray-300 px-4 py-3 text-sm
+                   outline-none focus:border-[#427A43]"
+          />
+          <label
+            for="password"
+            class="absolute left-4 top-1/2 -translate-y-1/2
+                   bg-white px-1 text-gray-500 text-sm transition-all
+                   peer-focus:top-0 peer-focus:text-xs peer-focus:text-[#427A43]
+                   peer-valid:top-0 peer-valid:text-xs"
+          >
+            Password
+          </label>
+        </div>
+          <div class="relative">
+          <input
+            type="password"
+            id="copassword"
+            required
+            class="peer w-full rounded-lg border border-gray-300 px-4 py-3 text-sm
+                   outline-none focus:border-[#427A43]"
+          />
+          <label
+            for="copassword"
+            class="absolute left-4 top-1/2 -translate-y-1/2
+                   bg-white px-1 text-gray-500 text-sm transition-all
+                   peer-focus:top-0 peer-focus:text-xs peer-focus:text-[#427A43]
+                   peer-valid:top-0 peer-valid:text-xs"
+          >
+            Confirm Password
+          </label>
+        </div>
+
+        <!-- Forgot -->
+       
+
+        <!-- Button -->
+        <button
+          type="submit"
+          class="bg-[#427A43] text-white rounded-lg py-3 font-medium
+                 hover:shadow-lg hover:-translate-y-[1px]
+                 transition-all duration-200"
+        >
+          Sign up
+        </button>
+
+      </form>
+
+      <!-- Footer -->
+      <p class="text-center text-sm text-gray-600 mt-6">
+         Do have an account?
+        <a href="/login" class="text-[#427A43] font-medium hover:underline">
+          Sign in
+        </a>
+      </p>
+
+    </div>
+  </div>
+
+</body>
+</html>
