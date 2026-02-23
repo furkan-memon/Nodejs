@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Your Cart</title>
+  <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+</head>
+
+<body class="bg-[#F2E3BB] min-h-screen p-10">
+
+  <div class="max-w-6xl mx-auto">
+
+    <h1 class="text-3xl font-semibold text-[#427A43] mb-8">
+      Your Shopping Cart
+    </h1>
+
+    <% if(user.cart.length === 0){ %>
+
+      <div class="bg-white p-8 rounded-xl shadow text-center">
+        <p class="text-gray-600 text-lg">Your cart is empty.</p>
+        <a href="/" class="mt-4 inline-block bg-[#427A43] text-white px-6 py-2 rounded-lg">
+          Continue Shopping
+        </a>
+      </div>
+
+    <% } else { %>
+
+      <% let total = 0; %>
+
+      <div class="space-y-6">
+
+        <% user.cart.forEach(item => { 
+             total += item.product.price * item.qty;
+        %>
+
+          <div class="bg-white rounded-xl shadow-md p-6 flex justify-between items-center">
+
+            <div class="flex items-center gap-6">
+
+              <div class="w-24 h-32 bg-[#F2E3BB] flex items-center justify-center rounded">
+                <img 
+                  src="data:image/jpeg;base64,<%= item.product.image.toString('base64') %>"
+                  class="max-h-full object-contain"
+                >
+              </div>
+
+              <div>
+                <h2 class="text-lg font-semibold text-[#427A43]">
+                  <%= item.product.name %>
+                </h2>
+                <p class="text-gray-600 text-sm">
+                  <%= item.product.authorname %>
+                </p>
+
+                <div class="flex items-center gap-3 mt-3">
+
+                  <a href="/cart/decrease/<%= item.product._id %>"
+                     class="px-3 py-1 bg-gray-200 rounded">
+                    -
+                  </a>
+
+                  <span class="font-semibold">
+                    <%= item.qty %>
+                  </span>
+
+                  <a href="/cart/increase/<%= item.product._id %>"
+                     class="px-3 py-1 bg-gray-200 rounded">
+                    +
+                  </a>
+
+                </div>
+
+              </div>
+            </div>
+
+            <div class="text-right">
+
+              <p class="text-lg font-bold text-[#427A43]">
+                ₹<%= item.product.price * item.qty %>
+              </p>
+
+              <a href="/cart/remove/<%= item.product._id %>"
+                 class="text-red-600 text-sm hover:underline mt-2 inline-block">
+                Remove
+              </a>
+
+            </div>
+
+          </div>
+
+        <% }) %>
+
+      </div>
+
+      <div class="mt-10 bg-white rounded-xl shadow-md p-6 flex justify-between items-center">
+
+        <h2 class="text-xl font-semibold">
+          Total
+        </h2>
+
+        <p class="text-2xl font-bold text-[#427A43]">
+          ₹<%= total %>
+        </p>
+
+      </div>
+
+      <div class="mt-6 text-right">
+        <button class="bg-[#427A43] text-white px-8 py-3 rounded-lg hover:bg-green-800">
+          Proceed to Checkout
+        </button>
+      </div>
+
+    <% } %>
+
+  </div>
+
+</body>
+</html>

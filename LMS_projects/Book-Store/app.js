@@ -2,13 +2,18 @@ require('dotenv').config();
 const express = require('express');
 const connectDB = require("./config/mongoose-connection");
 const userRoutes = require('./routes/auth');
+const adminRoutes = require('./routes/admin');
+const cookieParser = require('cookie-parser');
 
 const app = express();
 
 app.set("view engine", "ejs");
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
+app.use(cookieParser());
 app.use("/", userRoutes);
+app.use("/admin", adminRoutes);
+
 
 const PORT = process.env.PORT || 5000;
 

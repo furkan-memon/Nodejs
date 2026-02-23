@@ -1,17 +1,17 @@
 const express = require("express");
 const router = express.Router();
 const upload = require("../config/multer");
-const Product = require("../models/Product");
+const Product = require("../models/products");
 
 
 // Show Upload Page
-router.get("/admin/upload", (req, res) => {
+router.get("/upload", (req, res) => {
   res.render("upload");
 });
 
 
 // Handle Upload
-router.post("/admin/upload", upload.single("image"), async (req, res) => {
+router.post("/upload", upload.single("image"), async (req, res) => {
   try {
     const { name, authorname, price } = req.body;
 
@@ -26,7 +26,7 @@ router.post("/admin/upload", upload.single("image"), async (req, res) => {
       price
     });
 
-    res.redirect("/admin/products");
+    res.redirect("/admin/product");
 
   } catch (err) {
     res.send(err.message);
@@ -34,10 +34,9 @@ router.post("/admin/upload", upload.single("image"), async (req, res) => {
 });
 
 
-// Show All Products
-router.get("/admin/products", async (req, res) => {
-  const products = await Product.find();
-  res.render("products", { products });
+router.get("/product", async (req, res) => {
+  const product = await Product.find();
+  res.render("product", { product });
 });
 
 module.exports = router;
