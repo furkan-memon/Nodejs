@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Edit Product</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+</head>
+
+<body class="bg-[#F2E3BB] min-h-screen flex items-center justify-center">
+
+  <div class="bg-white shadow-xl rounded-2xl p-8 w-full max-w-2xl">
+
+    <div class="mb-6 text-center">
+      <h1 class="text-2xl font-semibold text-[#427A43]">
+        Edit Book
+      </h1>
+      <p class="text-gray-500 text-sm mt-1">
+        Update book details
+      </p>
+    </div>
+
+    <form action="/admin/update/<%= product._id %>" 
+          method="POST" 
+          enctype="multipart/form-data"
+          class="space-y-5">
+
+      <div class="flex justify-center mb-4">
+        <div class="w-40 h-56 bg-[#F2E3BB] flex items-center justify-center rounded">
+          <img 
+            src="data:image/jpeg;base64,<%= product.image.toString('base64') %>"
+            class="max-h-full object-contain"
+          >
+        </div>
+      </div>
+
+      <div>
+        <label class="block mb-1 text-sm font-medium text-[#427A43]">
+          Book Name
+        </label>
+        <input type="text" 
+               name="name" 
+               value="<%= product.name %>" 
+               required
+               class="w-full border border-gray-300 rounded-lg px-4 py-3
+                      focus:outline-none focus:border-[#427A43]">
+      </div>
+
+      <div>
+        <label class="block mb-1 text-sm font-medium text-[#427A43]">
+          Author Name
+        </label>
+        <input type="text" 
+               name="authorname" 
+               value="<%= product.authorname %>" 
+               required
+               class="w-full border border-gray-300 rounded-lg px-4 py-3
+                      focus:outline-none focus:border-[#427A43]">
+      </div>
+
+      <div>
+        <label class="block mb-1 text-sm font-medium text-[#427A43]">
+          Price (₹)
+        </label>
+        <input type="number" 
+               name="price" 
+               value="<%= product.price %>" 
+               required
+               class="w-full border border-gray-300 rounded-lg px-4 py-3
+                      focus:outline-none focus:border-[#427A43]">
+      </div>
+
+      <div>
+        <label class="block mb-1 text-sm font-medium text-[#427A43]">
+          Change Book Cover (Optional)
+        </label>
+        <input type="file" 
+               name="image" 
+               accept="image/*"
+               class="w-full border border-gray-300 rounded-lg px-4 py-3
+                      file:bg-[#427A43] file:text-white file:px-4 file:py-1
+                      file:rounded file:border-0">
+      </div>
+
+      <div class="flex justify-between items-center pt-4">
+
+        <a href="/admin/products"
+           class="text-gray-600 hover:underline">
+          Cancel
+        </a>
+
+        <button type="submit"
+                class="bg-[#427A43] text-white px-6 py-3 rounded-lg hover:bg-green-800 transition">
+          Update Book
+        </button>
+
+      </div>
+
+    </form>
+
+  </div>
+
+</body>
+</html>
