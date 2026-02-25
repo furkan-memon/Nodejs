@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Edit Movie</title>
+  <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+</head>
+
+<body class="bg-gray-100 flex items-center justify-center min-h-screen">
+
+  <div class="bg-white shadow-xl rounded-xl p-8 w-full max-w-2xl">
+
+    <h1 class="text-2xl font-bold mb-6">Edit Movie</h1>
+
+    <form action="/admin/update/<%= movie._id %>" method="POST" enctype="multipart/form-data" class="space-y-4">
+
+      <input name="title" value="<%= movie.title %>" required
+        class="w-full border rounded-lg px-4 py-2">
+
+      <input name="director" value="<%= movie.director %>"
+        class="w-full border rounded-lg px-4 py-2">
+
+      <input name="genre" value="<%= movie.genre %>"
+        class="w-full border rounded-lg px-4 py-2">
+
+      <input name="releaseYear" type="number" value="<%= movie.releaseYear %>"
+        class="w-full border rounded-lg px-4 py-2">
+
+      <textarea name="description"
+        class="w-full border rounded-lg px-4 py-2"><%= movie.description %></textarea>
+
+      <% if(movie.poster){ %>
+        <img src="data:image/jpeg;base64,<%= movie.poster.toString('base64') %>"
+             class="w-40 mb-4">
+      <% } %>
+
+      <input type="file" name="poster"
+        class="w-full border rounded-lg px-4 py-2">
+
+      <button class="w-full bg-blue-600 text-white py-2 rounded-lg">
+        Update Movie
+      </button>
+
+    </form>
+
+  </div>
+
+</body>
+</html>

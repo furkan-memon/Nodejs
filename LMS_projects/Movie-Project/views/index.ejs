@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Movies</title>
+  <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+</head>
+
+<body class="bg-gray-100 min-h-screen">
+
+  <div class="max-w-6xl mx-auto p-8">
+
+    <h1 class="text-3xl font-bold mb-6">Movie Collection</h1>
+
+    <form method="GET" class="mb-8 flex gap-4">
+      <input type="text" name="search" value="<%= search %>"
+        placeholder="Search movie..."
+        class="border rounded-lg px-4 py-2 w-full focus:outline-none focus:border-blue-500">
+      <button class="bg-blue-600 text-white px-6 py-2 rounded-lg">
+        Search
+      </button>
+    </form>
+
+    <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-8">
+
+      <% movies.forEach(movie => { %>
+
+        <div class="bg-white rounded-xl shadow hover:shadow-xl transition">
+
+          <div class="h-72 flex items-center justify-center bg-gray-200 rounded-t-xl">
+            <% if(movie.poster){ %>
+              <img src="data:image/jpeg;base64,<%= movie.poster.toString('base64') %>"
+                   class="max-h-full object-contain">
+            <% } %>
+          </div>
+
+          <div class="p-4">
+            <h2 class="text-lg font-semibold"><%= movie.title %></h2>
+            <p class="text-gray-500 text-sm mt-1"><%= movie.genre %></p>
+
+            <a href="/movie/<%= movie._id %>"
+               class="mt-4 inline-block bg-blue-600 text-white px-4 py-2 rounded-lg text-sm">
+               View Details
+            </a>
+          </div>
+
+        </div>
+
+      <% }) %>
+
+    </div>
+
+  </div>
+
+</body>
+</html>

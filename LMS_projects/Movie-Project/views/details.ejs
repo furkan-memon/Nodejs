@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title><%= movie.title %></title>
+  <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+</head>
+
+<body class="bg-gray-100 min-h-screen">
+
+  <div class="max-w-4xl mx-auto p-8 bg-white shadow rounded-xl mt-10">
+
+    <div class="flex flex-col md:flex-row gap-8">
+
+      <div class="w-full md:w-1/3 bg-gray-200 rounded-xl flex items-center justify-center">
+        <% if(movie.poster){ %>
+          <img src="data:image/jpeg;base64,<%= movie.poster.toString('base64') %>"
+               class="max-h-96 object-contain">
+        <% } %>
+      </div>
+
+      <div class="flex-1">
+        <h1 class="text-3xl font-bold mb-4"><%= movie.title %></h1>
+        <p><strong>Director:</strong> <%= movie.director %></p>
+        <p><strong>Genre:</strong> <%= movie.genre %></p>
+        <p><strong>Release Year:</strong> <%= movie.releaseYear %></p>
+
+        <p class="mt-4 text-gray-700">
+          <%= movie.description %>
+        </p>
+
+        <a href="/" class="mt-6 inline-block bg-blue-600 text-white px-6 py-2 rounded-lg">
+          Back
+        </a>
+      </div>
+
+    </div>
+
+  </div>
+
+</body>
+</html>
