@@ -6,7 +6,7 @@ const userModel = require('./model/user')
 const postModel = require('./model/post')
 const bcrypt = require('bcrypt')
 const jwt = require('jsonwebtoken');
-const user = require('./model/user');
+
 
 
 
@@ -24,6 +24,8 @@ app.use(cookieParser())
 app.get('/',(req,res)=>{
   res.render('index')
 })
+
+
 
 app.get('/register',(req,res)=>{
   res.render('register')

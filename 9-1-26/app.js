@@ -38,6 +38,7 @@ const uploadDir = path.join(__dirname, 'public', 'images', 'upload');
 
 app.get('/', (req, res) => {
   res.render('index')
+  
 })
 
 app.get('/profile/upload',authenticateToken,async (req, res) => {
