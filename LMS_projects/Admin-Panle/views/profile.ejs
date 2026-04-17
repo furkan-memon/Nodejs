@@ -1,0 +1,79 @@
+<%- include('header') %>
+
+<div class="p-6 lg:p-10 flex flex-col items-center justify-center min-h-[80vh] bg-cloud">
+    <div class="w-full max-w-xl mb-8">
+        <h1 class="text-3xl font-black text-slate-900 tracking-tight">Account Profile</h1>
+        <p class="text-slate-500 font-medium">Your personal administrative identity</p>
+    </div>
+
+    <div class="w-full max-w-xl bg-white rounded-[3.5rem] shadow-2xl shadow-plum/5 border border-slate-100 overflow-hidden relative">
+        
+        <div class="h-32 bg-plum w-full relative">
+            <div class="absolute inset-0 opacity-10" style="background-image: url('https://www.transparenttextures.com/patterns/cubes.png');"></div>
+        </div>
+
+        <div class="px-8 pb-12 relative">
+            <div class="flex justify-center -mt-16 mb-6">
+                <div class="relative group">
+                    <img class="w-32 h-32 rounded-[2.5rem] object-cover border-4 border-white shadow-xl bg-white" 
+                         src="<%= user.profileImage %>" 
+                         alt="<%= user.firstname %>">
+                    <div class="absolute bottom-1 right-1 w-8 h-8 bg-green-500 border-4 border-white rounded-full shadow-sm" title="Online Status"></div>
+                </div>
+            </div>
+
+            <div class="text-center mb-10">
+                <h2 class="text-2xl font-black text-slate-900 leading-tight">
+                    <%= user.firstname %> <%= user.lastname %>
+                </h2>
+                <span class="inline-block mt-2 px-4 py-1 bg-plum/10 text-plum text-[10px] font-black uppercase tracking-widest rounded-full">
+                    System Administrator
+                </span>
+            </div>
+
+            <div class="space-y-4">
+                <div class="flex items-center gap-4 p-4 rounded-3xl bg-cloud/50 border border-slate-50 group hover:bg-white hover:shadow-lg hover:shadow-plum/5 transition-all">
+                    <div class="w-10 h-10 bg-white rounded-xl flex items-center justify-center text-plum shadow-sm">
+                        <i class="mdi mdi-email-outline text-xl"></i>
+                    </div>
+                    <div>
+                        <p class="text-[10px] font-black text-slate-400 uppercase tracking-widest leading-none mb-1">Email Address</p>
+                        <p class="text-sm font-bold text-slate-700"><%= user.email %></p>
+                    </div>
+                </div>
+
+                <div class="grid grid-cols-2 gap-4">
+                    <div class="flex items-center gap-4 p-4 rounded-3xl bg-cloud/50 border border-slate-50">
+                        <div class="w-10 h-10 bg-white rounded-xl flex items-center justify-center text-plum shadow-sm">
+                            <i class="mdi mdi-gender-male-female text-xl"></i>
+                        </div>
+                        <div>
+                            <p class="text-[10px] font-black text-slate-400 uppercase tracking-widest leading-none mb-1">Gender</p>
+                            <p class="text-sm font-bold text-slate-700"><%= user.gender %></p>
+                        </div>
+                    </div>
+
+                    <div class="flex items-center gap-4 p-4 rounded-3xl bg-cloud/50 border border-slate-50">
+                        <div class="w-10 h-10 bg-white rounded-xl flex items-center justify-center text-plum shadow-sm">
+                            <i class="mdi mdi-phone-outline text-xl"></i>
+                        </div>
+                        <div>
+                            <p class="text-[10px] font-black text-slate-400 uppercase tracking-widest leading-none mb-1">Contact</p>
+                            <p class="text-sm font-bold text-slate-700"><%= user.mobileNo %></p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="mt-10">
+                <a href="/admin/edit-admin/<%= user.id %>" 
+                   class="w-full bg-plum text-white py-5 rounded-[2rem] font-black uppercase text-xs tracking-[0.2em] shadow-xl shadow-plum/20 hover:bg-slate-900 active:scale-95 transition-all flex items-center justify-center gap-3">
+                    <i class="mdi mdi-account-edit-outline text-lg"></i>
+                    <span>Edit Profile Settings</span>
+                </a>
+            </div>
+        </div>
+    </div>
+</div>
+
+<%- include('footer') %>

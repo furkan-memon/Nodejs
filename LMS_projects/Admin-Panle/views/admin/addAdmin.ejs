@@ -1,0 +1,36 @@
+<%- include('header') %>
+
+<div class="p-6 lg:p-10 max-w-4xl mx-auto">
+    <div class="bg-white rounded-[3rem] shadow-xl shadow-plum/5 border border-slate-100 overflow-hidden">
+        <div class="h-3 bg-plum w-full"></div>
+        <form class="p-8 md:p-12" action="/admin/add-admin" method="post" enctype="multipart/form-data">
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8 mb-10">
+                <div class="space-y-6">
+                    <h4 class="text-xs font-black text-plum uppercase tracking-widest mb-4">Personal Info</h4>
+                    <input type="text" name="firstname" placeholder="First Name" class="w-full bg-cloud border-none rounded-2xl px-6 py-4 text-sm font-semibold focus:ring-2 focus:ring-plum outline-none">
+                    <input type="text" name="lastname" placeholder="Last Name" class="w-full bg-cloud border-none rounded-2xl px-6 py-4 text-sm font-semibold focus:ring-2 focus:ring-plum outline-none">
+                    <div class="flex gap-4">
+                        <label class="flex-1 cursor-pointer"><input type="radio" name="gender" value="Male" class="hidden peer"><div class="text-center py-3 rounded-2xl bg-cloud text-slate-500 font-bold text-sm peer-checked:bg-plum peer-checked:text-white transition-all">Male</div></label>
+                        <label class="flex-1 cursor-pointer"><input type="radio" name="gender" value="Female" class="hidden peer"><div class="text-center py-3 rounded-2xl bg-cloud text-slate-500 font-bold text-sm peer-checked:bg-plum peer-checked:text-white transition-all">Female</div></label>
+                    </div>
+                </div>
+                <div class="space-y-6">
+                    <h4 class="text-xs font-black text-plum uppercase tracking-widest mb-4">Account Security</h4>
+                    <input type="email" name="email" placeholder="Email Address" class="w-full bg-cloud border-none rounded-2xl px-6 py-4 text-sm font-semibold focus:ring-2 focus:ring-plum outline-none">
+                    <input type="password" name="password" placeholder="Password" class="w-full bg-cloud border-none rounded-2xl px-6 py-4 text-sm font-semibold focus:ring-2 focus:ring-plum outline-none">
+                    <input type="text" name="mobileNo" placeholder="Mobile Number" class="w-full bg-cloud border-none rounded-2xl px-6 py-4 text-sm font-semibold focus:ring-2 focus:ring-plum outline-none">
+                </div>
+            </div>
+            <div class="bg-cloud p-8 rounded-[2rem] border-2 border-dashed border-slate-200 text-center relative group">
+                <input type="file" name="profileImage" class="absolute inset-0 opacity-0 cursor-pointer" required>
+                <i class="mdi mdi-cloud-upload text-3xl text-plum mb-2"></i>
+                <p class="text-xs font-bold text-slate-500 uppercase">Upload Profile Image</p>
+            </div>
+            <div class="mt-10 flex justify-end gap-4">
+                <button type="submit" class="px-12 py-4 bg-plum text-white rounded-2xl font-black uppercase text-xs tracking-widest shadow-xl shadow-plum/20 hover:bg-slate-900 active:scale-95 transition-all">Create Admin</button>
+            </div>
+        </form>
+    </div>
+</div>
+
+<%- include('footer') %>

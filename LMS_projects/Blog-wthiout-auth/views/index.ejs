@@ -1,0 +1,37 @@
+<%- include("partials/header") %>
+
+<div class="mb-16 text-center">
+  <h1 class="text-5xl font-bold mb-4">Stories & Musings</h1>
+  <div class="h-1 w-20 bg-cocoa mx-auto"></div>
+</div>
+
+<section class="mb-20">
+  <form action="/add" method="POST" class="bg-white border border-cocoa/20 p-8 rounded-2xl">
+    <input name="title" placeholder="Title of your story..." required 
+           class="w-full text-2xl font-bold outline-none bg-transparent border-none focus:ring-0 placeholder:text-cocoa/20 mb-4">
+    <textarea name="description" placeholder="Begin writing..." required rows="3" 
+              class="w-full bg-transparent outline-none border-none focus:ring-0 resize-none placeholder:text-cocoa/20 mb-4"></textarea>
+    <div class="flex justify-end">
+        <button class="bg-cocoa text-cream px-8 py-3 rounded-xl font-bold hover:scale-105 transition-transform">
+          Publish Entry
+        </button>
+    </div>
+  </form>
+</section>
+
+<div class="space-y-12">
+  <% blogs.forEach(blog => { %>
+    <article class="group border-b border-cocoa/10 pb-12 transition-all">
+      <div class="flex justify-between items-start mb-4">
+        <h3 class="text-3xl font-bold group-hover:text-opacity-70 transition cursor-pointer"><%= blog.title %></h3>
+        <div class="flex gap-4 opacity-0 group-hover:opacity-100 transition-opacity">
+          <a href="/edit/<%= blog._id %>" class="text-xs font-bold uppercase tracking-tighter hover:underline">Edit</a>
+          <a href="/delete/<%= blog._id %>" class="text-xs font-bold uppercase tracking-tighter text-red-800 hover:underline">Remove</a>
+        </div>
+      </div>
+      <p class="text-lg leading-relaxed text-cocoa/80 line-clamp-3"><%= blog.description %></p>
+    </article>
+  <% }) %>
+</div>
+
+<%- include("partials/footer") %>

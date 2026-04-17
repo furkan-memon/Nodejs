@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        plum: '#853953',
+                        cloud: '#F3F4F4',
+                    }
+                }
+            }
+        }
+    </script>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.materialdesignicons.com/5.4.55/css/materialdesignicons.min.css">
+    <style>
+        body { font-family: 'Plus Jakarta Sans', sans-serif; background-color: #F3F4F4; }
+        .sidebar-active { background-color: #853953; color: white; box-shadow: 0 10px 15px -3px rgba(133, 57, 83, 0.2); }
+    </style>
+</head>
+<body class="bg-cloud text-slate-800 flex min-h-screen">
+
+<aside class="w-72 bg-white border-r border-slate-200 sticky top-0 h-screen hidden lg:flex flex-col p-6">
+    <div class="mb-10 px-2">
+        <h2 class="text-plum font-black text-3xl tracking-tighter italic">MATRIX.</h2>
+    </div>
+    
+    <nav class="flex-1 space-y-2">
+        <a href="/dashboard" class="flex items-center gap-3 px-4 py-3 rounded-2xl font-bold sidebar-active transition-all">
+            <i class="mdi mdi-view-dashboard text-xl"></i> Dashboard
+        </a>
+        <div class="pt-4 pb-2 px-4 text-[10px] font-black text-slate-400 uppercase tracking-widest">Management</div>
+        <a href="/admin/view-admins" class="flex items-center gap-3 px-4 py-3 rounded-2xl font-semibold text-slate-500 hover:bg-plum/5 hover:text-plum transition-all">
+            <i class="mdi mdi-account-cog text-xl"></i> Admins
+        </a>
+        <a href="/blogs" class="flex items-center gap-3 px-4 py-3 rounded-2xl font-semibold text-slate-500 hover:bg-plum/5 hover:text-plum transition-all">
+            <i class="mdi mdi-post-outline text-xl"></i> Blogs
+        </a>
+    </nav>
+
+    <div class="bg-plum/5 p-4 rounded-3xl border border-plum/10">
+        <p class="text-[10px] font-black text-plum uppercase mb-1">Status</p>
+        <p class="text-xs font-bold text-slate-600">Secure Server Online</p>
+    </div>
+</aside>
+
+<main class="flex-1 p-6 md:p-10">

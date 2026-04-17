@@ -1,0 +1,49 @@
+<%- include('header') %>
+
+<div class="p-6 lg:p-10">
+    <header class="flex flex-col md:flex-row md:items-center justify-between gap-4 mb-10">
+        <div>
+            <h1 class="text-3xl font-black text-slate-900 tracking-tight">Main Dashboard</h1>
+            <p class="text-slate-500 font-medium">Welcome back, <%= user.firstname %>!</p>
+        </div>
+        <div class="flex items-center gap-4 bg-white p-2 pr-6 rounded-full border border-slate-200 shadow-sm">
+            <img src="<%= user.profileImage %>" class="w-10 h-10 rounded-full border-2 border-plum object-cover">
+            <span class="font-bold text-sm text-slate-700"><%= user.firstname %></span>
+        </div>
+    </header>
+
+    <div class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-4 gap-6 mb-10">
+        <% const stats = [{l:'Users', v:'2,540', i:'mdi-account'}, {l:'Orders', v:'9,540', i:'mdi-cart'}, {l:'Clicks', v:'125', i:'mdi-cursor-default-click'}, {l:'Online', v:'8', i:'mdi-earth'}] %>
+        <% stats.forEach(s => { %>
+            <div class="bg-white p-6 rounded-[2rem] border border-slate-100 flex items-center gap-5 shadow-sm hover:border-plum/30 transition-all group">
+                <div class="w-14 h-14 bg-cloud rounded-2xl flex items-center justify-center text-plum text-2xl group-hover:bg-plum group-hover:text-white transition-all">
+                    <i class="mdi <%= s.i %>"></i>
+                </div>
+                <div>
+                    <p class="text-[10px] font-black text-slate-400 uppercase tracking-widest"><%= s.l %></p>
+                    <h3 class="text-2xl font-black text-slate-900"><%= s.v %></h3>
+                </div>
+            </div>
+        <% }) %>
+    </div>
+
+    <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
+        <div class="lg:col-span-2 bg-white p-8 rounded-[3rem] border border-slate-100 shadow-sm">
+            <h4 class="text-xl font-black text-plum mb-6">Site Analysis</h4>
+            <div class="h-64 bg-cloud/50 rounded-3xl border-2 border-dashed border-slate-200 flex items-center justify-center text-slate-400 italic">
+                Analytics Chart Placeholder
+            </div>
+        </div>
+        <div class="bg-plum p-8 rounded-[3rem] text-white shadow-xl shadow-plum/20 relative overflow-hidden">
+            <h4 class="text-xl font-black mb-2">Storage</h4>
+            <p class="text-cloud/60 text-sm mb-6">75% capacity used.</p>
+            <div class="w-full bg-white/10 h-2 rounded-full mb-8">
+                <div class="bg-white h-full w-3/4 rounded-full"></div>
+            </div>
+            <button class="w-full bg-white text-plum py-4 rounded-2xl font-black uppercase text-[10px] tracking-widest hover:bg-cloud transition-all">Upgrade Plan</button>
+            <i class="mdi mdi-cloud-outline absolute -bottom-4 -right-4 text-white/5 text-9xl"></i>
+        </div>
+    </div>
+</div>
+
+<%- include('footer') %>
