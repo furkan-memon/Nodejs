@@ -4,13 +4,11 @@ import { protect } from "../middleware/authMiddleware.js";
 
 const router = express.Router();
 
-// READ
 router.get("/", protect, async (req, res) => {
   const blogs = await Blog.find({ userId: req.user.id }).sort({ createdAt: -1 });
   res.render("index", { blogs });
 });
 
-// CREATE
 router.post("/add", protect, async (req, res) => {
   await Blog.create({
     title: req.body.title,
@@ -20,7 +18,6 @@ router.post("/add", protect, async (req, res) => {
   res.redirect("/");
 });
 
-// DELETE
 router.get("/delete/:id", protect, async (req, res) => {
   const blog = await Blog.findById(req.params.id);
 
@@ -31,7 +28,6 @@ router.get("/delete/:id", protect, async (req, res) => {
   res.redirect("/");
 });
 
-// EDIT PAGE
 router.get("/edit/:id", protect, async (req, res) => {
   const blog = await Blog.findById(req.params.id);
 
@@ -41,7 +37,6 @@ router.get("/edit/:id", protect, async (req, res) => {
   res.render("edit", { blog });
 });
 
-// UPDATE
 router.post("/update/:id", protect, async (req, res) => {
   const blog = await Blog.findById(req.params.id);
 

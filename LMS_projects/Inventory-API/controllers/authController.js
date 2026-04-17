@@ -1,9 +1,7 @@
-// controllers/authController.js
 import User from "../models/User.js";
 import bcrypt from "bcryptjs";
 import jwt from "jsonwebtoken";
 
-// Register
 export const register = async (req, res) => {
   const { email, password } = req.body;
 
@@ -21,7 +19,6 @@ export const register = async (req, res) => {
   res.status(201).json(user);
 };
 
-// Login
 export const login = async (req, res) => {
   const { email, password } = req.body;
 

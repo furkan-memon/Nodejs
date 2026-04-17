@@ -28,11 +28,8 @@ mongoose.connect("mongodb://127.0.0.1:27017/blogDB")
     console.error(err.message);
   });
 
-// Add this line right after mongoose.connect
 mongoose.set('bufferCommands', false);
-// Routes
 app.use("/", authRoutes);
 app.use("/", blogRoutes);
 
-// Server
 app.listen(3000, () => console.log("Server running on port 3000"));

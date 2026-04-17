@@ -5,11 +5,9 @@ import User from "../models/User.js";
 
 const router = express.Router();
 
-// Pages
 router.get("/login", (req, res) => res.render("login"));
 router.get("/register", (req, res) => res.render("register"));
 
-// Register
 router.post("/register", async (req, res) => {
   const { email, password } = req.body;
 
@@ -23,7 +21,6 @@ router.post("/register", async (req, res) => {
   res.redirect("/login");
 });
 
-// Login
 router.post("/login", async (req, res) => {
   const { email, password } = req.body;
 
@@ -39,7 +36,6 @@ router.post("/login", async (req, res) => {
   res.redirect("/");
 });
 
-// Logout
 router.get("/logout", (req, res) => {
   res.clearCookie("token");
   res.redirect("/login");
