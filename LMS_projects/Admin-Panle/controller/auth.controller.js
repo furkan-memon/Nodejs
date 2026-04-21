@@ -1,8 +1,33 @@
-import { Admin } from "../model/admin-panel.model.js";
+import { Admin } from "../model/admin.js";
 import bcrypt from "bcrypt";
 import otpgenerator from "otp-generator";
 import os from "os";
 import sendEmail from "../middleware/sendEmail.js";
+export const UserloginPage = (req, res) => {
+  try {
+    if (req.cookies && req.cookies.user && req.cookies.user._id != undefined) {
+      return res.redirect("/dashboard");
+    } else {
+      return res.render("login");
+    }
+  } catch (err) {
+    console.log(err);
+    return res.redirect("/dashboard");
+  }
+};
+export const loginUser = async(req , res) => {
+  try{
+    let User = await User.findOne({email:req.body.email})
+
+    if(!admin){
+      console.log("Admin not found");
+      return res.redirect("/")
+    }
+  }catch(err){
+    console.log(err);
+    return res.redirect("/dashboard")
+  }
+}
 
 export const loginPage = (req, res) => {
   try {
@@ -17,15 +42,15 @@ export const loginPage = (req, res) => {
   }
 };
 
-export const loginWithAdmin = (req, res) => {
-  try {
-    res.clearCookie("user");
-    return res.redirect("/");
-  } catch (err) {
-    console.log(err);
-    res.redirect("/dashboard");
-  }
-};
+// export const loginWithAdmin = (req, res) => {
+//   try {
+//     res.clearCookie("user");
+//     return res.redirect("/");
+//   } catch (err) {
+//     console.log(err);
+//     res.redirect("/dashboard");
+//   }
+// };
 
 export const dashboard = (req, res) => {
   try {
@@ -102,19 +127,7 @@ export const changePassword = async (req, res) => {
   }
 };
 
-export const loginUser = async(req , res) => {
-  try{
-    let admin = await Admin.findOne({email:req.body.email})
 
-    if(!admin){
-      console.log("Admin not found");
-      return res.redirect("/")
-    }
-  }catch(err){
-    console.log(err);
-    return res.redirect("/dashboard")
-  }
-}
 
 export const forgotPasswordPage = (req , res) => {
   try{
