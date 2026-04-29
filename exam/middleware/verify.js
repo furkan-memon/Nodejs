@@ -1,24 +1,41 @@
-let jwt=require('jsonwebtoken')
-const cookie=require("cookie-parser")
+const jwt = require('jsonwebtoken');
 
+const JWT_SECRET = "jeel_secret_key";
 
-const verify=(req,res,next)=>{
-    let {token}=req.cookies
-   
-    if(token){
-        let decode=jwt.verify(token,"gius")
-        if(decode){
-            req.user=decode
-            next()
+const verify = (req, res, next) => {
+    let { token } = req.cookies;
+
+    if (token) {
+        try {
+            let decode = jwt.verify(token, JWT_SECRET);
+            req.user = decode;
+            next();
+        } catch (err) {
+            return res.redirect("/login");
         }
-        else{
-            res.send({msg:"login...."})
-        }
-    }else{
-        res.send({msg:"login or signup...."})
+    } else {
+        return res.redirect("/login");
     }
 }
 
+const adminVerify = (req, res, next) => {
+    let { token } = req.cookies;
 
+    if (token) {
+        try {
+            let decode = jwt.verify(token, JWT_SECRET);
+            if (decode.role === "admin") {
+                req.user = decode;
+                next();
+            } else {
+                return res.status(403).send("Access denied. Admin only.");
+            }
+        } catch (err) {
+            return res.redirect("/login");
+        }
+    } else {
+        return res.redirect("/login");
+    }
+}
 
-module.exports=verify
+module.exports = { verify, adminVerify, JWT_SECRET };

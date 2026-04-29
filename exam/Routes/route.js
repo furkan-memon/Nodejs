@@ -1,43 +1,38 @@
 const { Router } = require("express");
-const { home, register, taskList, login, taskForm, signup, login_Post, signout, taskForm_post, mytask, taskListGet, admindelet, allTask, taskItem } = require("../controller/usercontroler");
-const verify=require("../middleware/verify")
-const user=require("../model/userschema")
+const {
+    home, register, task, login, taskForm, signup,
+    login_Post, signout, taskForm_post, mytask, taskGet,
+    adminDelete, allTask, editTask, updateTask, deleteTask, taskItem
+} = require("../controller/usercontroler");
+const { verify, adminVerify } = require("../middleware/verify");
 
-const opp=Router()
+const opp = Router();
 
-opp.get("/",home)
-opp.get("/register",register)
-opp.get("/login",login)
-opp.get("/taskList",taskList)
-opp.get("/taskForm",verify,taskForm)
-opp.get("/taskList",taskListGet)
-opp.post("/register",signup)
-opp.post("/login",login_Post)
-opp.get("/signout",signout)
-opp.post("/taskForm",verify,taskForm_post)
+// Public routes
+opp.get("/", home);
+opp.get("/register", register);
+opp.get("/login", login);
+opp.get("/task", task);
 
-opp.get("/mytask",verify,mytask)
+// Auth routes
+opp.post("/register", signup);
+opp.post("/login", login_Post);
+opp.get("/signout", signout);
 
-opp.delete("/delete/:id",admindelet)
+// Protected user routes
+opp.get("/taskList", verify, taskGet);
+opp.get("/taskForm", verify, taskForm);
+opp.post("/taskForm", verify, taskForm_post);
+opp.get("/mytask", verify, mytask);
+opp.get("/taskItem", verify, taskItem);
 
+// Protected task CRUD routes
+opp.delete("/delete/:id", verify, deleteTask);
+opp.get("/edit/:id", verify, editTask);
+opp.patch("/edit/:id", verify, updateTask);
 
-opp.get("/edit/:id",async(req,res)=>{
-    let {id}=req.params
-    let data=await task.findById(id)
-    console.log(data);
-    res.render("taskForm",{data,edit:true})
-})
+// Admin only routes
+opp.get("/allTask", adminVerify, allTask);
+opp.delete("/admin/delete/:id", adminVerify, adminDelete);
 
-opp.patch("/edit/:id",async(req,res)=>{
-
-    let {id}=req.params
-    let data=await task.findByIdAndUpdate(id,req.body)
-    res.send(data)
-
-})
-
-opp.get("/allTask",allTask)
-
-
-
-module.exports=opp
+module.exports = opp;

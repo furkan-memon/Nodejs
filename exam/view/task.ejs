@@ -3,14 +3,11 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>taskItem</title>
-    <style>
-        @import url(/stle.css);
-    </style>
+    <title>taskList</title>
 </head>
-
 <body>
     <%- include("navbar") %>
+
     <section>
         <div class="conatiner">
             <table>
@@ -24,9 +21,16 @@
             </table>
         </div>
     </section>
+
 </body>
 <script>
- 
+    const dele=(id)=>{
+        fetch(`/delete/${id}`,{
+            method:"DELETE"
+        })
+        window.location.reload()
+
+    }
 
     const display=(data)=>{
         document.querySelector(".Task").innerHTML=" "
@@ -43,9 +47,7 @@
             delet.append(btn)
             btn.innerHTML="Delete"
 
-            btn.addEventListener("click",()=>{
-                window.location.href=`/user/${ele._id}`
-            })
+            btn.addEventListener("click",()=>dele(ele._id))
 
 
             let up=document.createElement("td")
@@ -62,7 +64,7 @@
     }
 
     const get=()=>{
-        fetch("/allTask")
+        fetch("/mytask")
         .then((res)=>res.json())
         .then((data)=>{
             display(data)
@@ -70,5 +72,4 @@
     }
     get()
 </script>
-
 </html>

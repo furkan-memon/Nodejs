@@ -1,8 +1,13 @@
-const mongoose=require("mongoose")
-
-const connect=async()=>{
-    await mongoose.connect("mongodb://localhost 127.0.0.1::27017")
-    console.log("connect");
+const mongoose = require("mongoose");
+require("dotenv").config(); 
+const connect = async () => {
+    try {
+        await mongoose.connect(process.env.MONGO_URL);
+        console.log("Successfully connected to MongoDB.");
+    } catch (error) {
+        console.error("Database connection failed:", error.message);
+        process.exit(1); 
+    }
 }
 
-module.exports=connect
+module.exports = connect;
